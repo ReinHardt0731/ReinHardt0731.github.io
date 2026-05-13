@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scroll Motion Demo</title>
+  <title>Scroll-Scrubbed GLB Demo</title>
   <meta
     name="description"
-    content="A sample portfolio-style landing page with a layered scroll-reactive animated background."
+    content="A Blender GLB camera animation scrubbed by page scroll, with timed 2D overlay cards."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,93 +17,116 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="page-shell">
-    <div class="background-stage" aria-hidden="true">
-      <div class="sky-glow sky-glow-a"></div>
-      <div class="sky-glow sky-glow-b"></div>
-      <div class="grid-field"></div>
-      <div class="orb orb-a"></div>
-      <div class="orb orb-b"></div>
-      <div class="orb orb-c"></div>
-      <div class="beam beam-a"></div>
-      <div class="beam beam-b"></div>
-      <div class="noise"></div>
+  <div class="app-shell">
+    <div class="scene-shell" aria-hidden="true">
+      <div id="scene-root" class="scene-root"></div>
+      <div class="scene-vignette"></div>
+      <div class="scene-noise"></div>
     </div>
 
     <header class="site-header">
-      <div class="brand">Scroll Motion</div>
-      <div class="scroll-pill">Scroll to animate</div>
+      <div>
+        <p class="kicker">Blender + Scroll</p>
+        <h1>Camera animation driven by the page.</h1>
+      </div>
+      <div class="status-pill">
+        <span id="frame-readout">Frame 0</span>
+        <span class="status-divider"></span>
+        <span id="progress-readout">0%</span>
+      </div>
     </header>
 
-    <main>
-      <section class="hero panel">
-        <p class="eyebrow">Interactive background sample</p>
-        <h1>Build a website where the background moves with your scroll.</h1>
-        <p class="lede">
-          This demo uses layered fixed elements, CSS transforms, and a tiny bit of JavaScript
-          to make the background drift, rotate, and glow as you move down the page.
-        </p>
-        <a class="cta" href="#explanation">See how it works</a>
-      </section>
-
-      <section class="content-grid">
-        <article class="panel info-card">
-          <p class="eyebrow">Technique 01</p>
-          <h2>Keep the background fixed.</h2>
-          <p>
-            The background lives in a full-screen layer behind the content, so the page scrolls
-            while the scene stays visible.
-          </p>
-        </article>
-
-        <article class="panel info-card">
-          <p class="eyebrow">Technique 02</p>
-          <h2>Map scroll to movement.</h2>
-          <p>
-            JavaScript reads the scroll position and updates CSS variables. Each background layer
-            moves at a different speed to create depth.
-          </p>
-        </article>
-
-        <article class="panel info-card">
-          <p class="eyebrow">Technique 03</p>
-          <h2>Animate with transforms.</h2>
-          <p>
-            Instead of changing layout, we animate transforms like <code>translate</code>,
-            <code>rotate</code>, and <code>scale</code> for smoother performance.
-          </p>
-        </article>
-      </section>
-
-      <section class="panel explanation" id="explanation">
-        <p class="eyebrow">What to look for</p>
-        <h2>The motion is subtle on purpose.</h2>
+    <main class="story-shell">
+      <section class="intro panel">
+        <p class="kicker">Current setup</p>
+        <h2>Your GLB camera path is now scrubbed by scroll.</h2>
         <p>
-          Notice how the glowing shapes rise at different rates, the grid shifts more slowly than
-          the content, and the light beams tilt slightly as you continue scrolling.
+          The 3D scene stays in the background while the website overlays transition in at key
+          moments. Scroll down and the animation will move from frame <strong>0</strong> to
+          <strong>250</strong>.
         </p>
       </section>
 
-      <section class="panel tall-panel">
-        <p class="eyebrow">Stretch the page</p>
-        <h2>More scrolling gives the background room to perform.</h2>
-        <p>
-          A longer layout makes parallax effects feel more cinematic. This section exists mainly to
-          give the animation space, like you would on a landing page or portfolio homepage.
-        </p>
+      <section class="scroll-stage">
+        <div class="sticky-ui">
+          <aside class="info-dock">
+            <article class="cue-card is-active" data-frame="0">
+              <p class="cue-label">Frame 0</p>
+              <h3>Opening shot</h3>
+              <p>
+                Use this first card for your scene setup, aircraft name, or a short cinematic intro.
+              </p>
+            </article>
+
+            <article class="cue-card" data-frame="96">
+              <p class="cue-label">Frame 96</p>
+              <h3>First reveal</h3>
+              <p>
+                This is a nice place for a feature callout, project summary, or your first data box.
+              </p>
+            </article>
+
+            <article class="cue-card" data-frame="192">
+              <p class="cue-label">Frame 192</p>
+              <h3>Closer detail</h3>
+              <p>
+                Drop in material details, system notes, or a second layer of explanation as the
+                camera gets tighter.
+              </p>
+            </article>
+
+            <article class="cue-card" data-frame="250">
+              <p class="cue-label">Frame 250</p>
+              <h3>Final message</h3>
+              <p>
+                End with your main takeaway, CTA, project link, or whatever should land on the last
+                pose of the shot.
+              </p>
+            </article>
+          </aside>
+
+          <div class="timeline panel">
+            <p class="kicker">Cue timeline</p>
+            <div class="timeline-list">
+              <div class="timeline-item is-hit" data-frame-marker="0">
+                <span>Frame 0</span>
+                <strong>Opening shot</strong>
+              </div>
+              <div class="timeline-item" data-frame-marker="96">
+                <span>Frame 96</span>
+                <strong>First reveal</strong>
+              </div>
+              <div class="timeline-item" data-frame-marker="192">
+                <span>Frame 192</span>
+                <strong>Closer detail</strong>
+              </div>
+              <div class="timeline-item" data-frame-marker="250">
+                <span>Frame 250</span>
+                <strong>Final message</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-space" aria-hidden="true"></div>
       </section>
 
-      <section class="panel footer-card">
-        <p class="eyebrow">Simple stack</p>
-        <h2>HTML, CSS, and one script file.</h2>
+      <section class="outro panel">
+        <p class="kicker">Customize it</p>
+        <h2>Edit the box copy in HTML and the trigger frames in one place.</h2>
         <p>
-          This is lightweight enough for GitHub Pages and easy to customize with your own colors,
-          photos, or portfolio sections.
+          You can change the card text directly in the markup, or move the trigger points by editing
+          the <code>data-frame</code> attributes. The JavaScript reads those values automatically.
         </p>
       </section>
     </main>
+
+    <div class="loading-panel panel" id="loading-panel">
+      <p class="kicker">Loading scene</p>
+      <p id="loading-copy">Reading <code>aircraft.glb</code> and preparing the camera animation.</p>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
