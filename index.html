@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Motion Demo</title>
+  <meta
+    name="description"
+    content="A sample portfolio-style landing page with a layered scroll-reactive animated background."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="background-stage" aria-hidden="true">
+      <div class="sky-glow sky-glow-a"></div>
+      <div class="sky-glow sky-glow-b"></div>
+      <div class="grid-field"></div>
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="orb orb-c"></div>
+      <div class="beam beam-a"></div>
+      <div class="beam beam-b"></div>
+      <div class="noise"></div>
+    </div>
+
+    <header class="site-header">
+      <div class="brand">Scroll Motion</div>
+      <div class="scroll-pill">Scroll to animate</div>
+    </header>
+
+    <main>
+      <section class="hero panel">
+        <p class="eyebrow">Interactive background sample</p>
+        <h1>Build a website where the background moves with your scroll.</h1>
+        <p class="lede">
+          This demo uses layered fixed elements, CSS transforms, and a tiny bit of JavaScript
+          to make the background drift, rotate, and glow as you move down the page.
+        </p>
+        <a class="cta" href="#explanation">See how it works</a>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel info-card">
+          <p class="eyebrow">Technique 01</p>
+          <h2>Keep the background fixed.</h2>
+          <p>
+            The background lives in a full-screen layer behind the content, so the page scrolls
+            while the scene stays visible.
+          </p>
+        </article>
+
+        <article class="panel info-card">
+          <p class="eyebrow">Technique 02</p>
+          <h2>Map scroll to movement.</h2>
+          <p>
+            JavaScript reads the scroll position and updates CSS variables. Each background layer
+            moves at a different speed to create depth.
+          </p>
+        </article>
+
+        <article class="panel info-card">
+          <p class="eyebrow">Technique 03</p>
+          <h2>Animate with transforms.</h2>
+          <p>
+            Instead of changing layout, we animate transforms like <code>translate</code>,
+            <code>rotate</code>, and <code>scale</code> for smoother performance.
+          </p>
+        </article>
+      </section>
+
+      <section class="panel explanation" id="explanation">
+        <p class="eyebrow">What to look for</p>
+        <h2>The motion is subtle on purpose.</h2>
+        <p>
+          Notice how the glowing shapes rise at different rates, the grid shifts more slowly than
+          the content, and the light beams tilt slightly as you continue scrolling.
+        </p>
+      </section>
+
+      <section class="panel tall-panel">
+        <p class="eyebrow">Stretch the page</p>
+        <h2>More scrolling gives the background room to perform.</h2>
+        <p>
+          A longer layout makes parallax effects feel more cinematic. This section exists mainly to
+          give the animation space, like you would on a landing page or portfolio homepage.
+        </p>
+      </section>
+
+      <section class="panel footer-card">
+        <p class="eyebrow">Simple stack</p>
+        <h2>HTML, CSS, and one script file.</h2>
+        <p>
+          This is lightweight enough for GitHub Pages and easy to customize with your own colors,
+          photos, or portfolio sections.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
